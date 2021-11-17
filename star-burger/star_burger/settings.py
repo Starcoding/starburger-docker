@@ -49,8 +49,11 @@ MIDDLEWARE = [
 ]
 
 if ROLLBAR_TOKEN:
-    local_repo = Repo(path=BASE_DIR)
-    local_branch = local_repo.active_branch.name
+    try:
+        local_repo = Repo(path=BASE_DIR)
+        local_branch = local_repo.active_branch.name
+    except:
+        local_branch = 'No branch detected'
     ROLLBAR = {
         'access_token': ROLLBAR_TOKEN,
         'environment': ROLLBAR_ENVIRONMENT if ROLLBAR_ENVIRONMENT else f'{BASE_DIR}, {local_branch}, Debug:{DEBUG}',
