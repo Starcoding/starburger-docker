@@ -20,6 +20,7 @@ services:
     command: gunicorn -b 0.0.0.0:8000 star_burger.wsgi:application --timeout 120 --workers=3 --threads=3 --worker-connections=1000
     volumes:
       - static_volume:/home/star-burger/staticfiles
+      - media_volume:/home/star-burger/media
     expose:
     - 8000
     env_file:
@@ -42,3 +43,4 @@ services:
 volumes:
   postgres_data:
   static_volume:
+  media_volume:
