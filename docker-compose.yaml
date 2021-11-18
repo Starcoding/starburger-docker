@@ -4,7 +4,7 @@ services:
   nginx:
     build: ./nginx
     ports:
-      - 1337:80
+      - 80:80
     volumes:
       - static_volume:/home/star-burger/staticfiles
     depends_on:
@@ -37,8 +37,6 @@ services:
       - POSTGRES_USER=starburger
       - POSTGRES_PASSWORD=onlyburgerscanmakepeoplehappy
       - POSTGRES_DB=starburgerdb
-    # ports:
-    #   - 5432:5432
       
 volumes:
   postgres_data:
